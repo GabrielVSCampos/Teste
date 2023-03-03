@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block modal %}
+
+    <dialog class="modal" id="popup">
+        <div class="card" id="carta">
+            <form action="/log-in" method="post" class="log-in" id="login-card" novalidate>
+                {{ form.hidden_tag() }}
+                <img class="close-modal" src="/static/close_icon.svg" alt="Close modal box">
+                <h1>Log in</h1>
+                <div id="container">
+                    {{ form.username.label }}
+                    {{ form.username(id="username") }}
+                    {% for error in form.username.errors %}
+                        <div class="color-error">{{ error }}</div>
+                    {% endfor %}
+                    {{ form.password.label }}
+                    {{ form.password(id="password") }}
+                    {% for error in form.password.errors %}
+                        <div class="color-error">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                <button id="submit" type="submit">Log in</button>
+                <div id="line"></div>
+                <p>Don't have an account?</p>
+                <button id="sign-up" type="button">Sign up!</button>
+            </form>
+            <form action="/sign-up" method="post" class="sign-up" id="sign-card" novalidate>
+                {{ form.hidden_tag() }}
+                <img class="close-modal" src="/static/close_icon.svg" alt="Close modal box">
+                <h1>Sign in</h1>
+                <div id="container">
+                    {{ form.username.label }}
+                    {{ form.username(id="username") }}
+                    {% for error in form.username.errors %}
+                        <div class="color-error">{{ error }}</div>
+                    {% endfor %}
+                    {{ form.password.label }}
+                    {{ form.password(id="password") }}
+                    {% for error in form.password.errors %}
+                        <div class="color-error">{{ error }}</div>
+                    {% endfor %}
+                    {{ form.confirmation.label }}
+                    {{ form.confirmation(id="confirmation") }}
+                    {% for error in form.confirmation.errors %}
+                        <div class="color-error">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                <button id="submit" type="submit">Sign up</button>
+                <div id="line"></div>
+                <p>Have an account?</p>
+                <button id="log-in" type="button">Log in!</button>
+            </form>
+        </div>
+    </dialog>
+
+{% endblock %}
